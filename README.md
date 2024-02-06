@@ -1,2 +1,2 @@
 # CodingLab
-CodingLab ist eine Sammlung meiner persönlichen Entwicklungsprojekte und Programmierübungen.
+Eine Sammlung meiner persönlichen Entwicklungsprojekte und Programmierübungen.
