@@ -22,6 +22,47 @@ body {
 h1 {
     color: #001432;
     font-weight: bold;
+    line-height: 1;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: gray;
+    color: #001432;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 130%;
+    margin-left: -60px;
+    font-size: 16px;
+}
+  
+.tooltip:hover {
+   cursor: pointer; 
+}
+  
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 40%;
+    left: -4px;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent grey transparent transparent;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 .container {
