@@ -1,0 +1,111 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');*/
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    margin: 0;
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    
+        &:hover {
+            cursor: pointer;
+    
+            .tooltiptext {
+                visibility: visible;
+            }
+        }
+
+        h1 {
+            color: #001432;
+            font-weight: bold;
+            line-height: 1;
+        }
+    
+        .tooltiptext {
+            visibility: hidden;
+            width: 180px;
+            background-color: gray;
+            color: #001432;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 30%;
+            left: 130%;
+            margin-left: -60px;
+            font-size: 16px;
+    
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 40%;
+                left: -4px;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent grey transparent transparent;
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        width: 90vw;
+    
+        .panel {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 80vh;
+            border-radius: 50px;
+            cursor: pointer;
+            flex: 0.5;
+            margin: 5px;
+            position: relative;
+            transition: flex 0.7s ease-in;
+        
+            h2 {
+                font-size: 24px;
+                color: blanchedalmond;
+                position: absolute;
+                bottom: 20px;
+                left: 8%;
+                margin: 0;
+                opacity: 0;
+            }
+        }
+        
+        .panel.active {
+            flex: 5;
+        
+            h2 {
+                opacity: 1;
+                transition: opacity 0.3s ease-in 0.1s;
+            }
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .container {
+        width: 100vw;
+
+        .panel.active {
+            flex: 1;
+        }
+    }
+}
