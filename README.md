@@ -1,5 +1,5 @@
 # CodingLab
-Eine Sammlung meiner Entwicklungsprojekte und Programmierübungen.
+A library of my development projects and programming exercises.
 
 #
 
