@@ -1,6 +1,5 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -44,6 +43,11 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void removeFavorite(WordPair selected) {
+    favorites.remove(selected);
+    notifyListeners();
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -61,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         page = GeneratorPage();
       case 1:
-        page = Placeholder();
+        page = FavoritesPage();
       default:
         throw UnimplementedError('no widget for $pSelectedIndex');
     }
@@ -147,6 +151,34 @@ class GeneratorPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class FavoritesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No favorites yet.'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: TextButton(onPressed: () {appState.removeFavorite(pair);}, child: Icon(Icons.favorite, size: 25,)),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
     );
   }
 }
