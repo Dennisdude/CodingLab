@@ -18,12 +18,15 @@ function buildGrid() {
   }
 }
 
+canvasContainer.addEventListener('mouseover', e => {
+  e.target.style.backgroundColor = "red";
+});
+
 gridSizeSlider.addEventListener('input', e => {
   clearGrid();
-  
   gridSize = e.target.value;
-  gridSizeText.textContent = `${gridSize}x${gridSize}`;
   buildGrid();
+  gridSizeText.textContent = `${gridSize}x${gridSize}`;
 });
 
 function init() {
