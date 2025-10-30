@@ -9,9 +9,16 @@
 <body>
   <h1>Etch-A-Sketch</h1>
   <div id="canvasContainer"></div>
-  <div id="optionsContainer">
-    <div id="gridSizeText">16x16</div>
-    <input type="range" id="gridSizeSlider" value="16" min="16" max="64">
+
+  <div class="controls">
+    <div class="gridBorders">
+      <div>Borders</div>
+      <input type="checkbox" id="gridBordersCheckbox" checked>
+    </div>
+    <div class="gridSize">
+      <div id="gridSizeText"></div>
+      <input type="range" id="gridSizeSlider" value="16" min="16" max="100">
+    </div>
   </div>
 
   <script src="script.js"></script>

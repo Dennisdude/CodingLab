@@ -22,11 +22,16 @@ body {
 .square {
   box-sizing: border-box;
   background-color: white;
+}
+
+.squareBorder {
   border: 0.2px solid var(--background-color);
 }
 
-#optionsContainer {
+.controls {
+  display: flex;
   text-align: center;
+
   padding-top: 20px;
 }
 
