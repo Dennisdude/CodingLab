@@ -7,13 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="device">
+  <main class="device">
+    <header class="brand">
+      <span class="brandName">SOLID STATE CALC · V2</span>
+    </header>
 
-    <div class="display">
-      <p id="displayText">r</p>
-    </div>
+    <section class="display">
+      <output id="displayText">0</output>
+    </section>
 
-    <div id="controlPad">
+    <section id="controlPad">
       <div class="top-buttons">
         <button>c</button>
         <button><</button>
@@ -44,9 +47,8 @@
           <button>+</button>
         </div>
       </div>
-    </div>
-
-  </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
