@@ -1,24 +1,91 @@
+:root {
+  --bg: #c6c3be;
+  --device-color: #bbb5ac;
+  --device-edge: #7e736f;
+  --device-reflect: #fef8f1;
+
+  --display-color: #060606;
+  --glow-a: #00a292;
+  --glow-b: #3db6cb;
+
+  --accent: #526342;
+
+
+  --ink: #e3d7c5;
+  --key: #282828;
+  --key-edge-1:#343a3c;
+  --key-edge-2:#373737;
+  --key-hole:#000;
+  --equal:#425d80;
+  --clear:#6f281a;
+  --radius: 10px;
+}
+
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  font-family: "WDXL Lubrifont SC", sans-serif;
+  height: 100dvh;
+  margin: 0;
+  font-family: "WDXL Lubrifont SC", Times, serif;
+  background: var(--bg);
 }
 
-.calculator {
-  border: 1px solid black;
-  padding: 1rem;
+.device {
+  width: 380px;
+  padding: 28px 18px 22px;
+
+  background: var(--device-color);
+  border-radius: 8px;
+  box-shadow: 
+    0 3px 2px var(--device-color),
+    0 16px 40px #97928b,
+    0 32px var(--device-edge),
+    8px 24px 12px #97867e,
+    24px -8px 40px #937a6e,
+    -10px 24px 40px var(--device-reflect);
+}
+
+.brand {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 8px 0 14px;
+
+  color: var(--accent);
+}
+
+.brand .brandModel {
+  font-weight: 900;
+  letter-spacing: 0.04em;
 }
 
 .display {
+  display: grid;
+
+  padding: 18px;
+  border: 2.4px inset #d6cfc5;
+  border-radius: 6px;
+
   text-align: right;
+  background: var(--display-color);
+  background: #222c3a;
+}
 
-  color: white;
-  background-color: #2c394b;
-  
-  border-radius: 5px;
+.display #displayText {
+  justify-self: end;
 
-  padding: 0 1rem;
+  min-height: 40px;
+  color: #ecf7ff;
+  font-size: 30px;
+  text-shadow: 
+    0 0 4.8px var(--glow-a),
+    0 0 4.8px var(--glow-b);
+}
+
+.controlPad {
+  margin-top: 16px;
 }
 
 .top-buttons {
