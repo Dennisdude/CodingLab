@@ -3,7 +3,7 @@ let operator = '';
 let secondNumber = '';
 
 const displayText = document.querySelector('#displayText');
-const controlPad = document.querySelector('#controlPad');
+const controlPad = document.querySelector('#buttons');
 
 function add(a, b) {
   return a + b;
