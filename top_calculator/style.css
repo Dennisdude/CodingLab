@@ -21,6 +21,14 @@
   --radius: 10px;
 }
 
+@font-face {
+  font-family: 'DepartureMono';
+  src: 
+    url(/fonts/DepartureMono-1.500/DepartureMono-Regular.woff2),
+    url(/fonts/DepartureMono-1.500/DepartureMono-Regular.woff),
+    url(/fonts/DepartureMono-1.500/DepartureMono-Regular.otf);
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -28,7 +36,7 @@ body {
 
   height: 100dvh;
   margin: 0;
-  font-family: "WDXL Lubrifont SC", Times, serif;
+  font-family: "DepartureMono", "WDXL Lubrifont SC", Times, serif;
   background: var(--bg);
 }
 
