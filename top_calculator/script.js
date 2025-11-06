@@ -21,65 +21,142 @@ function divide(a, b) {
   return a / b;
 }
 
-function operate(pFirstNumber, pSecondNumber, pOperator) {
-  switch (pOperator) {
+function operate(a, b, op) {
+  switch (op) {
     case '+':
-      return add(+pFirstNumber, +pSecondNumber);
+      return add(+a, +b);
 
     case '-':
-      return subtract(+pFirstNumber, +pSecondNumber);
+      return subtract(+a, +b);
   
     case 'x':
-      return multiply(+pFirstNumber, +pSecondNumber);
+      return multiply(+a, +b);
 
     case '/':
-      return divide(+pFirstNumber, +pSecondNumber);
+      return divide(+a, +b);
 
     default:
-      return `Error: ${pOperator} not valid operator`;
+      resetValues();
+      render();
+      return `Error: ${op} not valid operator`;
   }
+}
+
+function resetValues() {
+  firstNumber = '';
+  operator = '';
+  secondNumber = '';
+}
+
+function handleDigit(digit) {
+  if (!operator) firstNumber += digit;
+  else secondNumber += digit;
+
+  render();
+}
+
+function handleDot() {
+  if (!operator) {
+    firstNumber += firstNumber === '' ? '0' : '';
+    firstNumber += firstNumber.includes('.') ? '' : '.';
+  } else {
+    secondNumber += secondNumber === '' ? '0' : '';
+    secondNumber += secondNumber.includes('.') ? '' : '.';
+  }
+  render();
+}
+
+function handleBackspace() {
+  if (secondNumber === '') {
+    if (operator === '') firstNumber = firstNumber.substring(0, firstNumber.length - 1);
+    else operator = '';
+  } else {
+    secondNumber = secondNumber.substring(0, secondNumber.length - 1);
+  }
+  render();
+  if (!firstNumber && !operator && !secondNumber) {
+    displayText.textContent = '_';
+  }
+}
+
+function handleClear() {
+  resetValues();
+  render();
+  displayText.textContent = '_';
+}
+
+function handleEqual() {
+  if (secondNumber === '') {
+    displayText.textContent = 'Syntax Error';
+    resetValues();
+    return;
+  }
+
+  if (firstNumber === '' && (operator === 'x' || operator === '/')) {
+    displayText.textContent = 'Syntax Error';
+    resetValues();
+    return;
+  } else if (operator === '/' && secondNumber == 0) {
+    displayText.textContent = 'Math Error';
+    resetValues();
+    return;
+  }
+
+  const result = Math.round(operate(firstNumber, secondNumber, operator) * 100) / 100;
+  if (!Number.isFinite(result) || Number.isNaN(result)) {
+    displayText.textContent = 'Math Error';
+    resetValues();
+    return;
+  }
+
+  firstNumber = result;
+  secondNumber = '';
+  operator = '';
+  render();
+
+}
+
+function render() {
+  displayText.textContent = `${firstNumber} ${operator} ${secondNumber}`;
 }
 
 controlPad.addEventListener('click', e => {
   //Check if button and not div was clicked
   if (e.target.matches('button')) {
     let clickedValue = e.target.textContent;
+    let clickedKey = e.target.dataset.key;
 
-    if (!isNaN(clickedValue)) {  // Number was clicked
-      if (!operator) {
-        firstNumber += clickedValue;
-        displayText.textContent = firstNumber;
-      } else {
-        secondNumber += clickedValue;
-        displayText.textContent = secondNumber;
-      }
-    } else if (clickedValue === '.') {  // Dot was clicked
-      if (!operator) {
-        firstNumber += firstNumber.includes('.') ? '' : clickedValue;
-        displayText.textContent = firstNumber;
-      } else {
-        secondNumber += secondNumber.includes('.') ? '' : clickedValue;;
-        displayText.textContent = secondNumber;
-      }
-    } else {  // Operator was clicked
-      if (!operator) {
-        if (!firstNumber) firstNumber = '0'; 
-        operator = clickedValue;
-      } else {
-        let result = operate(firstNumber, secondNumber, operator);
-        result = result == undefined ? 'Error' : result;
-        displayText.textContent = result;
-        console.log(result);
-        firstNumber = '';
-        operator = '';
-        secondNumber = '';
-      }
+    switch (clickedKey) {
+      case 'digit':
+        handleDigit(clickedValue);
+        break;
+
+      case 'dot':
+        handleDot();
+        break;
+
+      case 'back':
+        handleBackspace();
+        break;
+
+      case 'clear':
+        handleClear();
+        break;
+
+      case 'operator':
+        if (!operator) {
+          operator = clickedValue
+          render();
+        } else {
+          handleEqual();
+          operator = clickedValue;
+          render();
+        }
+      break;
+
+      case 'equal':
+        handleEqual();
+        break;       
     }
   }
 })
-
-function init() {
-  
-}
-
-init()
