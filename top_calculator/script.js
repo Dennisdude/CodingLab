@@ -109,11 +109,23 @@ function handleEqual() {
     return;
   }
 
-  firstNumber = result;
+  firstNumber = result.toString();
   secondNumber = '';
   operator = '';
   render();
 
+}
+
+function togglePlusMinus() {
+  if (!operator && firstNumber !== '') {
+    if (firstNumber.includes('-')) firstNumber = firstNumber.slice(1, firstNumber.length)
+    else firstNumber = '-' + firstNumber;
+    render();
+  } else if (secondNumber !== '') {
+    if (secondNumber.includes('-')) secondNumber = secondNumber.slice(1, secondNumber.length)
+    else secondNumber = '-' + secondNumber;
+    render();
+  }
 }
 
 function render() {
@@ -156,7 +168,14 @@ controlPad.addEventListener('click', e => {
 
       case 'equal':
         handleEqual();
-        break;       
+        break; 
+        
+      case 'togglePlusMinus':
+        togglePlusMinus();
+        break;
+      
+      default:
+        break;
     }
   }
 })
