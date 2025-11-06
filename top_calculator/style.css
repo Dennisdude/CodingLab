@@ -197,3 +197,9 @@ button:active {
 button.equalButton {
   flex: 0 1 138px;
 }
+
+@media (min-width: 1000px) {
+  .device {
+    transform: scale(1.5);
+  }
+}
