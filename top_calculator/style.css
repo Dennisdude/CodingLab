@@ -37,14 +37,14 @@ body {
 
   height: 100dvh;
   margin: 0;
-  font-family: "DepartureMono", "WDXL Lubrifont SC", Times, serif;
-  font-size: 11px;
+  font-family: "WDXL Lubrifont SC", Times, serif;
+  font-size: 14px;
   background: var(--bg);
 }
 
 .device {
   width: 395px;
-  padding: 32px 24px 40px;
+  padding: 16px 24px 40px;
 
   background: var(--device-color);
   border-radius: 8px;
@@ -68,9 +68,10 @@ body {
 }
 
 .brand .brandModel {
+  padding: 0 20px;
+
   font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.04em;
+  font-weight: bolder;
 }
 
 .display {
@@ -83,12 +84,13 @@ body {
   text-align: right;
   background: #222c3a;
   background: var(--display-color);
-}
+  }
 
 .display #displayText {
   justify-self: end;
 
   min-height: 40px;
+  font-family: "DepartureMono", "WDXL Lubrifont SC", Times, serif;
   color: #ecf7ff;
   font-size: 33px;
   text-shadow: 
