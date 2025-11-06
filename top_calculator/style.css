@@ -22,9 +22,9 @@
 @font-face {
   font-family: 'DepartureMono';
   src: 
-    url(/fonts/DepartureMono-1.500/DepartureMono-Regular.woff2),
-    url(/fonts/DepartureMono-1.500/DepartureMono-Regular.woff),
-    url(/fonts/DepartureMono-1.500/DepartureMono-Regular.otf);
+    url(../fonts/DepartureMono-1.500/DepartureMono-Regular.woff2),
+    url(../fonts/DepartureMono-1.500/DepartureMono-Regular.woff),
+    url(../fonts/DepartureMono-1.500/DepartureMono-Regular.otf);
 }
 
 body {
