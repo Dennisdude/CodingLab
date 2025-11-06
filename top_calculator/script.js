@@ -85,11 +85,11 @@ function handleClear() {
   displayText.textContent = '_';
 }
 
-function handleEqual() {
+function handleResult() {
   if (secondNumber === '') {
     displayText.textContent = 'Syntax Error';
     resetValues();
-    return;
+    return true;
   }
 
   if (firstNumber === '' && (operator === 'x' || operator === '/')) {
@@ -160,14 +160,18 @@ controlPad.addEventListener('click', e => {
           operator = clickedValue
           render();
         } else {
-          handleEqual();
-          operator = clickedValue;
-          render();
+          //  returns true if an error occured in the result,
+          //  for example, if '+' is typed twice in a row.
+          let resultError = handleResult();
+          if (!resultError) {
+            operator = clickedValue;
+            render();
+          }
         }
       break;
 
       case 'equal':
-        handleEqual();
+        handleResult();
         break; 
         
       case 'togglePlusMinus':
