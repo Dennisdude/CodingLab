@@ -4,21 +4,19 @@
   --device-edge: #7e736f;
   --device-reflect: #fef8f1;
 
+  --accent: #526342;
+
   --display-color: #060606;
   --glow-a: #00a292;
   --glow-b: #3db6cb;
 
-  --accent: #526342;
+  --button-color: #282828;
+  --button-print: #e3d7c5;
+  --button-edge1:#343a3c;
+  --button-edge2:#373737;
 
-
-  --ink: #e3d7c5;
-  --key: #282828;
-  --key-edge-1:#343a3c;
-  --key-edge-2:#373737;
-  --key-hole:#000;
-  --equal:#425d80;
-  --clear:#6f281a;
-  --radius: 10px;
+  --equal-button:#425d80;
+  --clear-button:#6f281a;
 }
 
 @font-face {
@@ -37,12 +35,13 @@ body {
   height: 100dvh;
   margin: 0;
   font-family: "DepartureMono", "WDXL Lubrifont SC", Times, serif;
+  font-size: 11px;
   background: var(--bg);
 }
 
 .device {
   width: 380px;
-  padding: 28px 18px 22px;
+  padding: 32px 24px 40px;
 
   background: var(--device-color);
   border-radius: 8px;
@@ -58,6 +57,7 @@ body {
 .brand {
   display: flex;
   justify-content: space-between;
+  align-items: end;
 
   margin: 8px 0 14px;
 
@@ -65,6 +65,7 @@ body {
 }
 
 .brand .brandModel {
+  font-size: 22px;
   font-weight: 900;
   letter-spacing: 0.04em;
 }
@@ -73,12 +74,12 @@ body {
   display: grid;
 
   padding: 18px;
-  border: 2.4px inset #d6cfc5;
-  border-radius: 6px;
+  border: inset #d6cfc5;
+  border-radius: 8px;
 
   text-align: right;
-  background: var(--display-color);
   background: #222c3a;
+  background: var(--display-color);
 }
 
 .display #displayText {
@@ -86,7 +87,7 @@ body {
 
   min-height: 40px;
   color: #ecf7ff;
-  font-size: 30px;
+  font-size: 33px;
   text-shadow: 
     0 0 4.8px var(--glow-a),
     0 0 4.8px var(--glow-b);
@@ -94,22 +95,50 @@ body {
 
 .controlPad {
   margin-top: 16px;
+  display: flex;
+  gap: 16px;
 }
 
-.top-buttons {
+.digitsButtons {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.columns {
+.operatorButtons {
   display: flex;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 button {
-  border-radius: 50%;
+  width: 65px;
+  height: 58px;
+
+  font-size: 40px;
+  color: var(--button-print);
+  background: var(--button-color);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 
+    0 0.8px 0.8px var(--button-edge1),
+    0 3.6px 7.2px var(--button-edge2),
+    0 7.2px var(--display-color),
+    0 9px #000,
+    7.2px 8.4px 12px #77624d;
+}
+
+button:active {
+  transform: translateY(3.6px);
+  box-shadow: 
+    0 1.2px 1.2px var(--button-edge1),
+    0 2.4px 3.6px var(--button-edge2),
+    0 3.6px var(--display-color),
+    0 4.8px #000,
+    3.6px 3.6px 6px #77624d;
+}
+
+button.equalButton {
+  flex: 0 1 138px;
 }
