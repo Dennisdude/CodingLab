@@ -3,49 +3,43 @@
   --device-color: #bbb5ac;
   --device-edge: #7e736f;
   --device-reflect: #fef8f1;
-
   --accent: #526342;
-
-  --crt-red: rgb(218, 49, 49);
-  --crt-green: rgb(112, 159, 115);
-  --crt-blue: rgb(40, 129, 206);
+  --crt-red: #da3232;
+  --crt-green: #709f73;
+  --crt-blue: #2881ce;
   --glow-a: #00a292;
   --glow-b: #3db6cb;
-
   --button-print: #e3d7c5;
   --button-color: #282828;
   --button-edge1:#343a3c;
   --button-edge2:#373737;
-
   --blue-button:#425d80;
   --red-button:#6f281a;
   --gold-button:#866317;
 }
 
 @font-face {
-  font-family: 'DepartureMono';
+  font-family: DepartureMono;
   src: 
-    url(../fonts/DepartureMono-1.500/DepartureMono-Regular.woff2),
-    url(../fonts/DepartureMono-1.500/DepartureMono-Regular.woff),
-    url(../fonts/DepartureMono-1.500/DepartureMono-Regular.otf);
+    url("../fonts/DepartureMono-1.500/DepartureMono-Regular.woff2"),
+    url("../fonts/DepartureMono-1.500/DepartureMono-Regular.woff"),
+    url("../fonts/DepartureMono-1.500/DepartureMono-Regular.otf");
 }
 
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
-
+  background: var(--bg);
+  justify-content: center;
   height: 100dvh;
   margin: 0;
   font-family: "WDXL Lubrifont SC", Times, serif;
   font-size: 14px;
-  background: var(--bg);
 }
 
 .device {
   width: 395px;
   padding: 16px 24px 40px;
-
   background: var(--device-color);
   border-radius: 8px;
   box-shadow: 
@@ -59,62 +53,64 @@ body {
 
 .brand {
   display: flex;
-  justify-content: space-between;
   align-items: end;
-
+  justify-content: space-between;
   margin: 8px 0 14px;
-
   color: var(--accent);
 }
 
-.brand .brandModel {
+.brand .brand-model {
   padding: 0 20px;
-
   font-size: 22px;
   font-weight: bolder;
 }
 
 .display {
   padding: 18px;
-  border: inset #d6cfc5;
-  border-radius: 8px;
-  text-align: right;
-  
   overflow: auto;
+  text-align: right;
   scrollbar-color: var(--device-edge) var(--device-color);
   scrollbar-width: thin;
+  border: inset #d6cfc5;
+  border-radius: 8px;
 }
 
 .display #displayText {
   justify-self: end;
-
   min-height: 40px;
-  font-family: "DepartureMono", "WDXL Lubrifont SC", Times, serif;
-  color: #ecf7ff;
+  font-family: DepartureMono, "WDXL Lubrifont SC", Times, serif;
   font-size: 33px;
+  color: #ecf7ff;
   text-shadow: 
     0 0 4.8px var(--glow-a),
     0 0 4.8px var(--glow-b);
 }
 
 .crt {
-  background-color: rgb(25, 25, 30);
-  text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5),
-    -1px -1px rgba(0, 255, 255, 0.4);
   position: relative;
+  background-color: #19191e;
+
+  /*
+  // crt text-shadow effect
+  text-shadow: 
+    0 0 0.2em currentColor, 
+    1px 1px rgba(255, 0, 255, 0.5),
+    -1px -1px rgba(0, 255, 255, 0.4);
+  */
+
   &:before,
   &:after {
-    content: "";
-    transform: translateZ(0);
-    pointer-events: none;
-    opacity: 0.5;
-    mix-blend-mode: overlay;
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
     top: 0;
+    left: 0;
     z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    content: "";
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+    transform: translateZ(0);
   }
 
   &:before {
@@ -124,6 +120,7 @@ body {
       var(--crt-blue) 4px
     );
   }
+  
   &:after {
     background: repeating-linear-gradient(
       90deg,
@@ -138,19 +135,17 @@ body {
   width: 99%;
   height: 4px;
   margin: 10px auto 14px;
-
   background: #989187;
   border-radius: 10px;
-
   box-shadow: 
-  inset 2px 2px 3px #88827a,
-  inset -2px -2px 3px var(--device-color);
+    inset 2px 2px 3px #88827a,
+    inset -2px -2px 3px var(--device-color);
 }
 
 .controlPad {
-  margin-top: 16px;
   display: flex;
   gap: 16px;
+  margin-top: 16px;
 }
 
 .digitsButtons {
@@ -168,11 +163,10 @@ body {
 button {
   width: 65px;
   height: 58px;
-
   font-size: 40px;
   color: var(--button-print);
-  background: var(--button-color);
   cursor: pointer;
+  background: var(--button-color);
   border: none;
   border-radius: 5px;
   box-shadow: 
@@ -182,12 +176,12 @@ button {
     7.2px 8.4px 12px #77624d;
 
   &:active {
-  transform: translateY(3.6px);
-  box-shadow: 
-    0 1.2px 1.2px var(--button-edge1),
-    0 2.4px 3.6px var(--button-edge2),
-    0 4.8px #000,
-    3.6px 3.6px 2.4px #77624d;
+    box-shadow: 
+      0 1.2px 1.2px var(--button-edge1),
+      0 2.4px 3.6px var(--button-edge2),
+      0 4.8px #000,
+      3.6px 3.6px 2.4px #77624d;
+    transform: translateY(3.6px);
   }
 }
 
@@ -251,7 +245,7 @@ button.goldButton {
   }
 }
 
-@media (min-width: 1000px) {
+@media (width >= 1000px) {
   .device {
     transform: scale(1.5);
   }
