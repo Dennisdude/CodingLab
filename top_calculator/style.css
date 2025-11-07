@@ -6,20 +6,20 @@
 
   --accent: #526342;
 
-  --display-color: #060606;
   --crt-red: rgb(218, 49, 49);
   --crt-green: rgb(112, 159, 115);
   --crt-blue: rgb(40, 129, 206);
   --glow-a: #00a292;
   --glow-b: #3db6cb;
 
-  --button-color: #282828;
   --button-print: #e3d7c5;
+  --button-color: #282828;
   --button-edge1:#343a3c;
   --button-edge2:#373737;
 
-  --equal-button:#425d80;
-  --clear-button:#6f281a;
+  --blue-button:#425d80;
+  --red-button:#6f281a;
+  --gold-button:#866317;
 }
 
 @font-face {
@@ -75,15 +75,10 @@ body {
 }
 
 .display {
-  display: grid;
-
   padding: 18px;
   border: inset #d6cfc5;
   border-radius: 8px;
-
   text-align: right;
-  background: #222c3a;
-  background: var(--display-color);
   }
 
 .display #displayText {
@@ -179,23 +174,77 @@ button {
   box-shadow: 
     0 0.8px 0.8px var(--button-edge1),
     0 3.6px 7.2px var(--button-edge2),
-    0 7.2px var(--display-color),
     0 9px #000,
     7.2px 8.4px 12px #77624d;
-}
 
-button:active {
+  &:active {
   transform: translateY(3.6px);
   box-shadow: 
     0 1.2px 1.2px var(--button-edge1),
     0 2.4px 3.6px var(--button-edge2),
-    0 3.6px var(--display-color),
     0 4.8px #000,
-    3.6px 3.6px 6px #77624d;
+    3.6px 3.6px 2.4px #77624d;
+  }
 }
 
-button.equalButton {
+button.bigButton {
   flex: 0 1 138px;
+}
+
+button.blueButton {
+  background: var(--blue-button);
+  box-shadow: 
+    0 1.2px 1.2px #3b5678,
+    0 3.6px 7.2px #344965,
+    0 7.2px #2b3d55,
+    0 9px #000,
+    2.2px 8.4px 12px #63738f;
+
+  &:active {
+    box-shadow:
+      0 1.2px 1.2px #3b5678,
+      0 2.4px 3.6px #344965,
+      0 3.6px #2b3d55,
+      0 4px #000,
+      3px 3px 2.4px #63738f;
+  }
+}
+
+button.redButton {
+  background: #6f281a;
+  box-shadow: 
+    0 1.2px 1.2px #601f1f,
+    0 3.6px 7.2px #531e13,
+    0 7.2px #1d0a07,
+    0 9px #000,
+    2.2px 8.4px 12px #926060;
+
+  &:active {
+    box-shadow:
+      0 1.2px 1.2px #601f1f,
+      0 2.4px 3.6px #531e13,
+      0 3.6px #1d0a07,
+      0 4.8px #000,
+      3.6px 3.6px 2.4px #926060;
+  }
+}
+
+button.goldButton {
+  padding-top: 5px;
+  background: var(--gold-button);
+  box-shadow: 
+    0 1.2px 1.2px #8a6615,
+    0 3.6px 7.2px #7a5c12,
+    0 7.2px #4a3b10,
+    0 9px #000;
+
+  &:active {
+    box-shadow:
+      0 1.2px 1.2px #8a6615,
+      0 2.4px 3.6px #7a5c12,
+      0 3.6px #4a3b10,
+      0 4.8px #000;
+  }
 }
 
 @media (min-width: 1000px) {
