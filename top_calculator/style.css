@@ -79,7 +79,11 @@ body {
   border: inset #d6cfc5;
   border-radius: 8px;
   text-align: right;
-  }
+  
+  overflow: auto;
+  scrollbar-color: var(--device-edge) var(--device-color);
+  scrollbar-width: thin;
+}
 
 .display #displayText {
   justify-self: end;
