@@ -1,53 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
-</head>
-<body>
-  <main class="device">
-    <header class="brand">
-      <span class="brandModel">CALCULATOR</span>
-      <span class="brandName">dennisdude.io</span>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="device">
+      <header class="brand">
+        <span class="brandModel">CALCULATOR</span>
+        <span class="brandName">dennisdude.io</span>
+      </header>
 
-    <section class="display crt">
-      <output id="displayText">_</output>
-    </section>
+      <section class="display crt">
+        <output id="displayText">_</output>
+      </section>
 
-    <div class="ridges"></div>
+      <div class="ridges"></div>
 
-    <section id="buttons" class="controlPad">
-      <div class="digitsButtons">
-        <button data-key="digit">7</button>
-        <button data-key="digit">8</button>
-        <button data-key="digit">9</button>
-        <button data-key="digit">4</button>
-        <button data-key="digit">5</button>
-        <button data-key="digit">6</button>
-        <button data-key="digit">1</button>
-        <button data-key="digit">2</button>
-        <button data-key="digit">3</button>
-        <button data-key="digit">0</button>
-        <button data-key="dot">,</button>
-        <button data-key="togglePlusMinus">+/-</button>
-      </div>
+      <section id="buttons" class="controlPad">
+        <div class="digitsButtons">
+          <button data-key="digit">7</button>
+          <button data-key="digit">8</button>
+          <button data-key="digit">9</button>
+          <button data-key="digit">4</button>
+          <button data-key="digit">5</button>
+          <button data-key="digit">6</button>
+          <button data-key="digit">1</button>
+          <button data-key="digit">2</button>
+          <button data-key="digit">3</button>
+          <button data-key="digit">0</button>
+          <button data-key="dot">,</button>
+          <button data-key="togglePlusMinus">+/-</button>
+        </div>
 
-      <div class="operatorButtons">
-        <button data-key="back" class="goldButton">↩</button>
-        <button data-key="clear" class="redButton">c</button>
-        <button data-key="operator">x</button>
-        <button data-key="operator">/</button>
-        <button data-key="operator">+</button>
-        <button data-key="operator">-</button>
-        <button data-key="equal" class="bigButton blueButton">=</button>
-      </div>
-    </section>
-  </main>
+        <div class="operatorButtons">
+          <button data-key="back" class="goldButton">↩</button>
+          <button data-key="clear" class="redButton">c</button>
+          <button data-key="operator">x</button>
+          <button data-key="operator">/</button>
+          <button data-key="operator">+</button>
+          <button data-key="operator">-</button>
+          <button data-key="equal" class="bigButton blueButton">=</button>
+        </div>
+      </section>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

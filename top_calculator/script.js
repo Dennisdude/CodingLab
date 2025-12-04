@@ -1,9 +1,9 @@
-let firstNumber = '';
-let operator = '';
-let secondNumber = '';
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
 
-const displayText = document.querySelector('#displayText');
-const controlPad = document.querySelector('#buttons');
+const displayText = document.querySelector("#displayText");
+const controlPad = document.querySelector("#buttons");
 
 function add(a, b) {
   return a + b;
@@ -23,16 +23,16 @@ function divide(a, b) {
 
 function operate(a, b, op) {
   switch (op) {
-    case '+':
+    case "+":
       return add(+a, +b);
 
-    case '-':
+    case "-":
       return subtract(+a, +b);
-  
-    case 'x':
+
+    case "x":
       return multiply(+a, +b);
 
-    case '/':
+    case "/":
       return divide(+a, +b);
 
     default:
@@ -43,9 +43,9 @@ function operate(a, b, op) {
 }
 
 function resetValues() {
-  firstNumber = '';
-  operator = '';
-  secondNumber = '';
+  firstNumber = "";
+  operator = "";
+  secondNumber = "";
 }
 
 function handleDigit(digit) {
@@ -57,73 +57,76 @@ function handleDigit(digit) {
 
 function handleDot() {
   if (!operator) {
-    firstNumber += firstNumber === '' ? '0' : '';
-    firstNumber += firstNumber.includes('.') ? '' : '.';
+    firstNumber += firstNumber === "" ? "0" : "";
+    firstNumber += firstNumber.includes(".") ? "" : ".";
   } else {
-    secondNumber += secondNumber === '' ? '0' : '';
-    secondNumber += secondNumber.includes('.') ? '' : '.';
+    secondNumber += secondNumber === "" ? "0" : "";
+    secondNumber += secondNumber.includes(".") ? "" : ".";
   }
   render();
 }
 
 function handleBackspace() {
-  if (secondNumber === '') {
-    if (operator === '') firstNumber = firstNumber.substring(0, firstNumber.length - 1);
-    else operator = '';
+  if (secondNumber === "") {
+    if (operator === "")
+      firstNumber = firstNumber.substring(0, firstNumber.length - 1);
+    else operator = "";
   } else {
     secondNumber = secondNumber.substring(0, secondNumber.length - 1);
   }
   render();
   if (!firstNumber && !operator && !secondNumber) {
-    displayText.textContent = '_';
+    displayText.textContent = "_";
   }
 }
 
 function handleClear() {
   resetValues();
   render();
-  displayText.textContent = '_';
+  displayText.textContent = "_";
 }
 
 function handleResult() {
-  if (secondNumber === '') {
-    displayText.textContent = 'Syntax Error';
+  if (secondNumber === "") {
+    displayText.textContent = "Syntax Error";
     resetValues();
     return true;
   }
 
-  if (firstNumber === '' && (operator === 'x' || operator === '/')) {
-    displayText.textContent = 'Syntax Error';
+  if (firstNumber === "" && (operator === "x" || operator === "/")) {
+    displayText.textContent = "Syntax Error";
     resetValues();
     return;
-  } else if (operator === '/' && secondNumber == 0) {
-    displayText.textContent = 'Math Error';
+  } else if (operator === "/" && secondNumber == 0) {
+    displayText.textContent = "Math Error";
     resetValues();
     return;
   }
 
-  const result = Math.round(operate(firstNumber, secondNumber, operator) * 100) / 100;
+  const result =
+    Math.round(operate(firstNumber, secondNumber, operator) * 100) / 100;
   if (!Number.isFinite(result) || Number.isNaN(result)) {
-    displayText.textContent = 'Math Error';
+    displayText.textContent = "Math Error";
     resetValues();
     return;
   }
 
   firstNumber = result.toString();
-  secondNumber = '';
-  operator = '';
+  secondNumber = "";
+  operator = "";
   render();
-
 }
 
 function togglePlusMinus() {
-  if (!operator && firstNumber !== '') {
-    if (firstNumber.includes('-')) firstNumber = firstNumber.slice(1, firstNumber.length)
-    else firstNumber = '-' + firstNumber;
+  if (!operator && firstNumber !== "") {
+    if (firstNumber.includes("-"))
+      firstNumber = firstNumber.slice(1, firstNumber.length);
+    else firstNumber = "-" + firstNumber;
     render();
-  } else if (secondNumber !== '') {
-    if (secondNumber.includes('-')) secondNumber = secondNumber.slice(1, secondNumber.length)
-    else secondNumber = '-' + secondNumber;
+  } else if (secondNumber !== "") {
+    if (secondNumber.includes("-"))
+      secondNumber = secondNumber.slice(1, secondNumber.length);
+    else secondNumber = "-" + secondNumber;
     render();
   }
 }
@@ -132,32 +135,32 @@ function render() {
   displayText.textContent = `${firstNumber} ${operator} ${secondNumber}`;
 }
 
-controlPad.addEventListener('click', e => {
+controlPad.addEventListener("click", (e) => {
   //Check if button and not div was clicked
-  if (e.target.matches('button')) {
+  if (e.target.matches("button")) {
     let clickedValue = e.target.textContent;
     let clickedKey = e.target.dataset.key;
 
     switch (clickedKey) {
-      case 'digit':
+      case "digit":
         handleDigit(clickedValue);
         break;
 
-      case 'dot':
+      case "dot":
         handleDot();
         break;
 
-      case 'back':
+      case "back":
         handleBackspace();
         break;
 
-      case 'clear':
+      case "clear":
         handleClear();
         break;
 
-      case 'operator':
+      case "operator":
         if (!operator) {
-          operator = clickedValue
+          operator = clickedValue;
           render();
         } else {
           //  returns true if an error occured in the result,
@@ -168,18 +171,18 @@ controlPad.addEventListener('click', e => {
             render();
           }
         }
-      break;
+        break;
 
-      case 'equal':
+      case "equal":
         handleResult();
-        break; 
-        
-      case 'togglePlusMinus':
+        break;
+
+      case "togglePlusMinus":
         togglePlusMinus();
         break;
-      
+
       default:
         break;
     }
   }
-})
+});

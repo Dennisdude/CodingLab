@@ -11,16 +11,16 @@
   --glow-b: #3db6cb;
   --button-print: #e3d7c5;
   --button-color: #282828;
-  --button-edge1:#343a3c;
-  --button-edge2:#373737;
-  --blue-button:#425d80;
-  --red-button:#6f281a;
-  --gold-button:#866317;
+  --button-edge1: #343a3c;
+  --button-edge2: #373737;
+  --blue-button: #425d80;
+  --red-button: #6f281a;
+  --gold-button: #866317;
 }
 
 @font-face {
   font-family: DepartureMono;
-  src: 
+  src:
     url("../fonts/DepartureMono-1.500/DepartureMono-Regular.woff2"),
     url("../fonts/DepartureMono-1.500/DepartureMono-Regular.woff"),
     url("../fonts/DepartureMono-1.500/DepartureMono-Regular.otf");
@@ -42,7 +42,7 @@ body {
   padding: 16px 24px 40px;
   background: var(--device-color);
   border-radius: 8px;
-  box-shadow: 
+  box-shadow:
     0 3px 2px var(--device-color),
     0 16px 40px #97928b,
     0 32px var(--device-edge),
@@ -81,7 +81,7 @@ body {
   font-family: DepartureMono, "WDXL Lubrifont SC", Times, serif;
   font-size: 33px;
   color: #ecf7ff;
-  text-shadow: 
+  text-shadow:
     0 0 4.8px var(--glow-a),
     0 0 4.8px var(--glow-b);
 }
@@ -120,7 +120,7 @@ body {
       var(--crt-blue) 4px
     );
   }
-  
+
   &:after {
     background: repeating-linear-gradient(
       90deg,
@@ -137,7 +137,7 @@ body {
   margin: 10px auto 14px;
   background: #989187;
   border-radius: 10px;
-  box-shadow: 
+  box-shadow:
     inset 2px 2px 3px #88827a,
     inset -2px -2px 3px var(--device-color);
 }
@@ -169,14 +169,14 @@ button {
   background: var(--button-color);
   border: none;
   border-radius: 5px;
-  box-shadow: 
+  box-shadow:
     0 0.8px 0.8px var(--button-edge1),
     0 3.6px 7.2px var(--button-edge2),
     0 9px #000,
     7.2px 8.4px 12px #77624d;
 
   &:active {
-    box-shadow: 
+    box-shadow:
       0 1.2px 1.2px var(--button-edge1),
       0 2.4px 3.6px var(--button-edge2),
       0 4.8px #000,
@@ -191,7 +191,7 @@ button.bigButton {
 
 button.blueButton {
   background: var(--blue-button);
-  box-shadow: 
+  box-shadow:
     0 1.2px 1.2px #3b5678,
     0 3.6px 7.2px #344965,
     0 7.2px #2b3d55,
@@ -210,7 +210,7 @@ button.blueButton {
 
 button.redButton {
   background: #6f281a;
-  box-shadow: 
+  box-shadow:
     0 1.2px 1.2px #601f1f,
     0 3.6px 7.2px #531e13,
     0 7.2px #1d0a07,
@@ -230,7 +230,7 @@ button.redButton {
 button.goldButton {
   padding-top: 5px;
   background: var(--gold-button);
-  box-shadow: 
+  box-shadow:
     0 1.2px 1.2px #8a6615,
     0 3.6px 7.2px #7a5c12,
     0 7.2px #4a3b10,
