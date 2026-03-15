@@ -1,4 +1,5 @@
 let gridSize = 16;
+let isDrawing = false;
 
 const canvasContainer = document.querySelector('#canvasContainer');
 const gridBordersCheckbox = document.querySelector('#gridBordersCheckbox');
@@ -23,9 +24,14 @@ function buildGrid() {
   gridBordersCheckbox.dispatchEvent(new CustomEvent('change'));
 }
 
-canvasContainer.addEventListener('mouseover', e => {
-  e.target.style.backgroundColor = "red";
-});
+function drawOnGrid(e) {
+  if (!isDrawing) return;
+  e.target.style.backgroundColor = "black";
+}
+
+canvasContainer.addEventListener("mousedown", () => {isDrawing = true});
+canvasContainer.addEventListener("mouseover", drawOnGrid);
+document.addEventListener("mouseup", () => {isDrawing = false});
 
 gridBordersCheckbox.addEventListener('change', () => {
   const canvasSquares = document.querySelectorAll('.square');
@@ -50,8 +56,6 @@ gridSizeSlider.addEventListener('input', e => {
 
 function init() {
   buildGrid();
-
-  gridBordersCheckbox.dispatchEvent(new CustomEvent('change'));
 }
 
 init();
