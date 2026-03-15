@@ -1,80 +1,101 @@
-let gridSize = 16;
-let isDrawing = false;
-let isErasing = false;
+(() => {
+  const DEFAULT_GRID_SIZE = 16;
+  const GRID_CLASS = 'square';
+  const BORDER_CLASS = 'squareBorder';
 
-const canvasContainer = document.querySelector('#canvasContainer');
-const gridBordersCheckbox = document.querySelector('#gridBordersCheckbox');
-const gridSizeText = document.querySelector('#gridSizeText');
-const gridSizeSlider = document.querySelector('#gridSizeSlider');
-const eraseButton = document.querySelector('#clearButton');
-const resetButton = document.querySelector('#resetButton');
+  let gridSize = DEFAULT_GRID_SIZE;
+  let isDrawing = false;
+  let isErasing = false;
 
-function clearGrid() {
-  canvasContainer.innerHTML = '';
-  buildGrid();
-}
+  const canvasContainer = document.querySelector('#canvasContainer');
+  const gridBordersCheckbox = document.querySelector('#gridBordersCheckbox');
+  const gridSizeText = document.querySelector('#gridSizeText');
+  const gridSizeSlider = document.querySelector('#gridSizeSlider');
+  const eraseButton = document.querySelector('#clearButton');
+  const resetButton = document.querySelector('#resetButton');
 
-function buildGrid() {
-  gridSizeText.textContent = `${gridSize}x${gridSize}`;
-
-  for (let i = 0; i < (gridSize*gridSize); i++) {
-    const canvasSquare = document.createElement('div');
-    canvasContainer.appendChild(canvasSquare);
-    canvasSquare.classList.add("square");
-    canvasSquare.style.height = 100/gridSize + '%';
-    canvasSquare.style.width = 100/gridSize + '%';
+  function updateGridSizeText() {
+    gridSizeText.textContent = `${gridSize}x${gridSize}`;
   }
 
-  gridBordersCheckbox.dispatchEvent(new CustomEvent('change'));
-}
+  function applyBorderStyle() {
+    const shouldShowBorders = gridBordersCheckbox.checked;
+    const squares = canvasContainer.querySelectorAll(`.${GRID_CLASS}`);
 
-function drawOnGrid(e) {
-  if (!e.target.classList.contains("square")) return;
-
-  if (isErasing) {
-    e.target.style.backgroundColor = "white";
-  } else if (isDrawing) {
-    e.target.style.backgroundColor = "black";
-  }
-}
-
-canvasContainer.addEventListener("mousedown", (e) => {
-  isDrawing = true;
-  drawOnGrid(e);
-});
-
-canvasContainer.addEventListener("mouseover", drawOnGrid);
-document.addEventListener("mouseup", () => isDrawing = false);
-
-eraseButton.addEventListener("click", () => {
-  isErasing = !isErasing;
-  eraseButton.classList.toggle("active");
-});
-
-gridBordersCheckbox.addEventListener('change', () => {
-  const canvasSquares = document.querySelectorAll('.square');
-
-  if (gridBordersCheckbox.checked) {
-    canvasSquares.forEach(square => {
-      square.classList.add('squareBorder');
-    });
-  } else {
-    canvasSquares.forEach(square => {
-      square.classList.remove('squareBorder');
+    squares.forEach(square => {
+      square.classList.toggle(BORDER_CLASS, shouldShowBorders);
     });
   }
-});
 
-gridSizeSlider.addEventListener('input', e => {
-  gridSize = e.target.value;
-  
-  clearGrid();
-});
+  function clearGrid() {
+    canvasContainer.textContent = '';
+    buildGrid();
+  }
 
-resetButton.addEventListener("click", clearGrid);
+  function buildGrid() {
+    updateGridSizeText();
 
-function init() {
-  buildGrid();
-}
+    const fragment = document.createDocumentFragment();
+    const sizePercent = 100 / gridSize;
 
-init();
+    for (let i = 0; i < gridSize * gridSize; i += 1) {
+      const square = document.createElement('div');
+      square.className = GRID_CLASS;
+      square.style.width = `${sizePercent}%`;
+      square.style.height = `${sizePercent}%`;
+
+      fragment.appendChild(square);
+    }
+
+    canvasContainer.appendChild(fragment);
+    applyBorderStyle();
+  }
+
+  function paintSquare(target) {
+    if (!target.classList.contains(GRID_CLASS)) return;
+
+    target.style.backgroundColor = isErasing ? 'white' : 'black';
+  }
+
+  function handleMouseDown(event) {
+    if (!event.target.classList.contains(GRID_CLASS)) return;
+
+    isDrawing = true;
+    paintSquare(event.target);
+  }
+
+  function handleMouseOver(event) {
+    if (!isDrawing) return;
+    paintSquare(event.target);
+  }
+
+  function handleMouseUp() {
+    isDrawing = false;
+  }
+
+  function toggleEraser() {
+    isErasing = !isErasing;
+    eraseButton.classList.toggle('active', isErasing);
+  }
+
+  function init() {
+    buildGrid();
+
+    canvasContainer.addEventListener('mousedown', handleMouseDown);
+    canvasContainer.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    
+    gridBordersCheckbox.addEventListener('change', applyBorderStyle);
+    
+    gridSizeSlider.addEventListener('input', (event) => {
+      gridSize = Number(event.target.value);
+      clearGrid();
+    });
+    
+    eraseButton.addEventListener('click', toggleEraser);
+    resetButton.addEventListener('click', clearGrid);
+  }
+
+  init();
+})();

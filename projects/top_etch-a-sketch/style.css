@@ -71,6 +71,7 @@ h1 {
 }
 
 button {
+  cursor: pointer;
   background: var(--background-color);
   border: none;
   border-radius: 12px;
