@@ -26,12 +26,19 @@ function buildGrid() {
 
 function drawOnGrid(e) {
   if (!isDrawing) return;
-  e.target.style.backgroundColor = "black";
+
+  if (e.target.classList.contains("square")) {
+    e.target.style.backgroundColor = "black";
+  }
 }
 
-canvasContainer.addEventListener("mousedown", () => {isDrawing = true});
+canvasContainer.addEventListener("mousedown", (e) => {
+  isDrawing = true;
+  drawOnGrid(e);
+});
+
 canvasContainer.addEventListener("mouseover", drawOnGrid);
-document.addEventListener("mouseup", () => {isDrawing = false});
+document.addEventListener("mouseup", () => isDrawing = false);
 
 gridBordersCheckbox.addEventListener('change', () => {
   const canvasSquares = document.querySelectorAll('.square');
