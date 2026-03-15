@@ -60,6 +60,30 @@ h1 {
 
 #gridSizeSlider {
   accent-color: var(--accent-color);
-  margin: 0 20px;
+  margin: 0 14px;
   
+}
+
+button {
+  background: var(--background-color);
+  border: none;
+  border-radius: 12px;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+  width: 36px;
+  height: 36px;
+
+  margin-left: 14px;
+}
+
+button.active {
+  color: white;
+  background-color: blue;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
 }

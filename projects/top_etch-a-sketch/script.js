@@ -1,13 +1,17 @@
 let gridSize = 16;
 let isDrawing = false;
+let isErasing = false;
 
 const canvasContainer = document.querySelector('#canvasContainer');
 const gridBordersCheckbox = document.querySelector('#gridBordersCheckbox');
 const gridSizeText = document.querySelector('#gridSizeText');
-const gridSizeSlider = document.querySelector('#gridSizeSlider')
+const gridSizeSlider = document.querySelector('#gridSizeSlider');
+const eraseButton = document.querySelector('#clearButton');
+const resetButton = document.querySelector('#resetButton');
 
 function clearGrid() {
   canvasContainer.innerHTML = '';
+  buildGrid();
 }
 
 function buildGrid() {
@@ -25,9 +29,11 @@ function buildGrid() {
 }
 
 function drawOnGrid(e) {
-  if (!isDrawing) return;
+  if (!e.target.classList.contains("square")) return;
 
-  if (e.target.classList.contains("square")) {
+  if (isErasing) {
+    e.target.style.backgroundColor = "white";
+  } else if (isDrawing) {
     e.target.style.backgroundColor = "black";
   }
 }
@@ -39,6 +45,11 @@ canvasContainer.addEventListener("mousedown", (e) => {
 
 canvasContainer.addEventListener("mouseover", drawOnGrid);
 document.addEventListener("mouseup", () => isDrawing = false);
+
+eraseButton.addEventListener("click", () => {
+  isErasing = !isErasing;
+  eraseButton.classList.toggle("active");
+});
 
 gridBordersCheckbox.addEventListener('change', () => {
   const canvasSquares = document.querySelectorAll('.square');
@@ -58,8 +69,9 @@ gridSizeSlider.addEventListener('input', e => {
   gridSize = e.target.value;
   
   clearGrid();
-  buildGrid();
 });
+
+resetButton.addEventListener("click", clearGrid);
 
 function init() {
   buildGrid();
