@@ -1,0 +1,86 @@
+:root {
+    --background-color: #EAE6D5;
+    --input-border: #E5E7EB;
+    --button-color: #596D48;
+}
+
+@font-face {
+  font-family: DepartureMono;
+  src:
+    url("/shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff2"),
+    url("/shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff"),
+    url("/shared/fonts/DepartureMono-1.500/DepartureMono-Regular.otf");
+}
+
+body {
+    display: flex;
+    
+    height: 100vh;
+    margin: 0;
+
+    font-size: 1.2rem;
+
+    background-color: var(--background-color);
+}
+
+.image-sidebar {
+    flex: 2;
+
+    background-image: url(./assets/FoliagePlant.jpg);
+    background-size: cover;
+}
+
+.content {
+    flex: 3;
+}
+
+span {
+    font-style: italic;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 14vh;
+    
+    color: white;
+    font-size: 8rem;
+    background: rgb(0, 0, 0, 50%);
+}
+
+.logo img {
+    height: 20vh;
+    width: auto;
+}
+
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inputs div {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border: 1px solid var(--input-border);
+}
+
+input[type="email"]:user-invalid,
+input[type="password"]:invalid {
+    border: 2px solid red;
+}
+
+button {
+    color: white;
+    background: var(--button-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--button-color);
+    font-weight: bolder;
+}
