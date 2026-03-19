@@ -12,9 +12,9 @@
 @font-face {
   font-family: DepartureMono;
   src:
-    url("/shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff2"),
-    url("/shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff"),
-    url("/shared/fonts/DepartureMono-1.500/DepartureMono-Regular.otf");
+    url("../../shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff2"),
+    url("../../shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff"),
+    url("../../shared/fonts/DepartureMono-1.500/DepartureMono-Regular.otf");
 }
 
 body {
