@@ -1,7 +1,12 @@
 :root {
     --background-color: #EAE6D5;
+    --accent-color: #596D48;
+
+    --text-color: white;
     --input-border: #E5E7EB;
-    --button-color: #596D48;
+    --input-error: red;
+
+    --text-padding-side: clamp(1rem, 4vw, 3rem);
 }
 
 @font-face {
@@ -15,10 +20,10 @@
 body {
     display: flex;
     
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
 
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     background-color: var(--background-color);
 }
 
@@ -27,6 +32,7 @@ body {
 
     background-image: url(./assets/FoliagePlant.jpg);
     background-size: cover;
+    background-position: center;
 }
 
 .logo {
@@ -40,8 +46,8 @@ body {
     padding: 1rem;
     
     font-family: monospace;
-    color: white;
-    font-size: 7rem;
+    color: var(--text-color);
+    font-size: clamp(2rem, 8vw, 7rem);
     background: rgb(0, 0, 0, 50%);
 }
 
@@ -60,7 +66,7 @@ body {
 }
 
 .content .text {
-    padding: 3rem;
+    padding: var(--text-padding-side);
 
 }
 
@@ -69,9 +75,9 @@ span {
 }
 
 fieldset {
-    padding: 0 3rem 1rem;
+    padding: 0 var(--text-padding-side) 1rem;
     
-    background-color: white;
+    background-color: var(--text-color);
     border: none;
 }
 
@@ -98,36 +104,55 @@ input {
 }
 
 input[type="email"]:user-invalid,
-input[type="tel"]:user-invalid,
 input[type="password"]:invalid {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid var(--input-error);
 }
 
 input:focus {
     outline: none;
-    border-bottom: 2px solid var(--button-color);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 button {
-    margin: 2rem 3rem 0;
+    margin: 2rem var(--text-padding-side) 0;
     padding: 10px 30px;
 
     font-family: DepartureMono, monospace;
     font-size: 1.1rem;
     font-weight: 600;
 
-    color: white;
-    background: var(--button-color);
+    color: var(--text-color);
+    background: var(--accent-color);
     border: none;
     border-radius: 6px;
 }
 
+button:hover,
+button:focus-visible {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+button:active {
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
 .link {
-    margin: 1rem 3rem;
+    margin: 1rem var(--text-padding-side);
 }
 
 a {
     text-decoration: none;
-    color: var(--button-color);
+    color: var(--accent-color);
     font-weight: bolder;
+}
+
+@media (max-width: 1090px) {
+    body {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin: 5vh auto;
+    }
 }
