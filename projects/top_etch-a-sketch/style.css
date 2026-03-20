@@ -4,12 +4,22 @@
   --accent-color: #fbceb1;
 }
 
+@font-face {
+  font-family: DepartureMono;
+  src:
+    url("../../shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff2"),
+    url("../../shared/fonts/DepartureMono-1.500/DepartureMono-Regular.woff"),
+    url("../../shared/fonts/DepartureMono-1.500/DepartureMono-Regular.otf");;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+  
+  font-family: DepartureMono, monospace;
   background-color: var(--background-color);
 }
 
@@ -33,6 +43,8 @@ body {
 }
 
 h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
   color: var(--accent-color);
 }
 
