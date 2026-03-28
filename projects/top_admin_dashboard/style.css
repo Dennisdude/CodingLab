@@ -65,13 +65,13 @@ body {
   display: grid;
   grid-template-columns: 400px 2fr min(30%, 450px);
   grid-template-rows: auto 1fr;
-
-  height: 100dvh;
   grid-template-areas: 
       "nav header header"
       "nav main aside";
 
-      font-family: 'JetBrains Mono', monospace;
+  height: 100dvh;
+
+  font-family: 'JetBrains Mono', monospace;
 }
 
 svg {
@@ -80,7 +80,46 @@ svg {
 
 nav {
   grid-area: nav;
+
+  display: grid;
+  grid-template-rows: auto 100px auto minmax(20px, 1fr) auto;
+  grid-template-areas:
+    "logo"
+    "."
+    "nav-links"
+    "."
+    "nav-settings";
+
+  height: 100%;
+  padding: 1.5rem;
+
   background-color: var(--nav-background);
+}
+
+nav .logo {
+  grid-area: logo;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--white-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+  
+}
+
+.logo svg {
+  width: 120px;
+  height: auto;
+}
+
+nav .nav-links {
+  grid-area: nav-links;
+}
+
+nav .nav-settings {
+  grid-area: nav-settings;
 }
 
 header {
