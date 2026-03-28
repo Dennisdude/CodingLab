@@ -54,3 +54,45 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* A Modern CSS Reset from https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+:root {
+  --main-background: #e2e8f0;
+  --nav-background: #1992d4;
+  --white-color: #f5f5f5;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 400px 2fr min(30%, 450px);
+  grid-template-rows: auto 1fr;
+
+  height: 100dvh;
+  grid-template-areas: 
+      "nav header header"
+      "nav main aside";
+
+      font-family: 'JetBrains Mono', monospace;
+}
+
+svg {
+  fill: var(--white-color);
+}
+
+nav {
+  grid-area: nav;
+  background-color: var(--nav-background);
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+  background-color: var(--main-background);
+}
+
+aside {
+  grid-area: aside;
+  background-color: var(--main-background);
+}
