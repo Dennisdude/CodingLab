@@ -171,6 +171,35 @@ header {
   grid-area: header;
 }
 
+header .searchBar {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+}
+
+.searchBar .searchInput {
+  width: 100%;
+  height: 2.8rem;
+  background: var(--main-background);
+  outline: none;
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0 3.5rem 0 1.5rem;
+  font-size: 1rem;
+}
+
+.searchBar .searchSubmit {
+  width: 3.5rem;
+  height: 2.8rem;
+  margin-left: -3.5rem;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 main {
   grid-area: main;
   background-color: var(--main-background);
