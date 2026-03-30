@@ -59,7 +59,9 @@ h1, h2, h3, h4, h5, h6 {
   --main-background: #e2e8f0;
   --nav-background: #1992d4;
   --white-color: #f5f5f5;
-  --hover-color: #929aa3;
+  --hover-color: #cbd5e1;
+  --nav-item-font-size: 1.4rem;
+  --nav-icon-size: 2.25rem;
 }
 
 body {
@@ -127,17 +129,37 @@ nav .nav-links {
   grid-area: nav-links;
 }
 
-.nav-links li, .nav-settings li {
-  color: var(--white-color);
-  list-style: none;
+.nav-links ul, .nav-settings ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-  &:hover {
-    color: var(--hover-color);
-  }
+  padding-left: 15px;
 }
 
+.nav-links li, .nav-settings li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: var(--nav-item-font-size);
+  font-family: monospace;
+  color: var(--white-color);
+  list-style: none;
+}
+
+.nav-links li:hover,
+.nav-settings li:hover {
+    color: var(--hover-color);
+
+    svg {
+      fill: var(--hover-color);
+    }
+  }
+
+
 .nav-links svg, .nav-settings svg {
-  width: 45px;
+  width: var(--nav-icon-size);
   height: auto;
 }
 
