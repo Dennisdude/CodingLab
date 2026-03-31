@@ -249,6 +249,7 @@ header .search {
 .greeting .profile-picture {
   width: 5rem;
   height: 5rem;
+  aspect-ratio: 1 / 1;
 
   border-radius: 50%;
   border: 2.5px solid var(--hover-color);
@@ -264,11 +265,11 @@ header .search {
 
 .header-bottom .action-buttons {
   display: flex;
-  width: 33%;
+  width: 400px;
 }
 
 .action-buttons button {
-  flex-grow: 1;
+  flex: 1;
   min-width: max-content;
   margin-left: 1rem;
   padding: 5px 0;
