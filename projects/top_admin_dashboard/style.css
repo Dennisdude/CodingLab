@@ -186,7 +186,7 @@ header .search {
   padding: 1rem;
 }
 
-.search .search-input {
+.search #search-input {
   width: 100%;
   height: 2.5rem;
   
@@ -214,14 +214,19 @@ header .search {
   font-weight: 600;
 }
 
-.user-profile svg {
+.user-profile #bell-outline {
   width: 1.75rem;
   height: 1.75rem;
   fill: black;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
-.user-profile img {
+.user-profile #profile-name {
+  cursor: default;
+}
+
+.user-profile #profile-picture {
   width: 2.75rem;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
