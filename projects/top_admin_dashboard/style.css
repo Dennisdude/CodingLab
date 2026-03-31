@@ -171,6 +171,13 @@ header {
   grid-area: header;
 }
 
+header .header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1.5rem;
+}
+
 header .search {
   width: 30%;
   display: flex;
@@ -196,6 +203,29 @@ header .search {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+
+  color: black;
+  font-weight: 600;
+}
+
+.user-profile svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: black;
+  flex-shrink: 0;
+}
+
+.user-profile img {
+  width: 2.75rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 2px solid var(--hover-color);
 }
 
 main {
