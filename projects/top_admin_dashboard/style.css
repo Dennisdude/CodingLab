@@ -264,15 +264,15 @@ header .search {
 
 .header-bottom .action-buttons {
   display: flex;
-  width: clamp(33%, 300px, 50%);
+  width: 33%;
 }
 
 .action-buttons button {
+  flex-grow: 1;
+  min-width: max-content;
   margin-left: 1rem;
   padding: 5px 0;
 
-  width: 30%;
-  
   color: var(--white-color);
   font-size: 1rem;
   font-weight: 500;
