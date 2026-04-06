@@ -60,6 +60,7 @@ h1, h2, h3, h4, h5, h6 {
   --nav-background: #1992d4;
   --white-color: #f5f5f5;
   --hover-color: #cbd5e1;
+  --dark-gray-color: #374252;
   --nav-item-font-size: 1.4rem;
   --nav-icon-size: 2.25rem;
 }
@@ -210,15 +211,14 @@ header .search {
   align-items: center;
   gap: 0.9rem;
 
-  color: black;
+  color: var(--dark-gray-color);
   font-weight: 600;
 }
 
 .user-profile #bell-outline {
   width: 1.75rem;
   height: 1.75rem;
-  fill: black;
-  flex-shrink: 0;
+  fill: var(--dark-gray-color);
   cursor: pointer;
 }
 
