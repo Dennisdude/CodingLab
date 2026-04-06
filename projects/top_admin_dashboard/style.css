@@ -289,6 +289,23 @@ header .search {
 main {
   grid-area: main;
   background-color: var(--main-background);
+  overflow: auto;
+}
+
+main .content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
+.content .project-card {
+  background-color: white;
+}
+
+.card-buttons svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--dark-gray-color);
+  cursor: pointer;
 }
 
 aside {
