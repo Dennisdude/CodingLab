@@ -58,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 :root {
   --main-background: #e2e8f0;
   --nav-background: #1992d4;
+  --nav-hover: #1687c4;
   --yellow-color: #eec315;
   --white-color: #f5f5f5;
   --hover-color: #cbd5e1;
@@ -215,11 +216,17 @@ header .search {
   font-weight: 600;
 }
 
+.user-profile button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .user-profile #bell-outline {
   width: 1.75rem;
   height: 1.75rem;
   fill: var(--dark-gray-color);
-  cursor: pointer;
 }
 
 .user-profile #profile-name {
@@ -286,6 +293,15 @@ header .search {
   background-color: var(--nav-background);
   border-radius: 20px;
   border: none;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background-color: var(--nav-hover);
+}
+
+.action-buttons button:active {
+  box-shadow: 0 0 8px var(--nav-hover);
 }
 
 .content-scroll {
@@ -397,7 +413,7 @@ aside .trending {
   cursor: pointer;
 }
 
-.trending-item spam {
+.trending-item span {
   font-weight: 500;
 }
 
