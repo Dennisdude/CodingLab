@@ -419,3 +419,106 @@ aside .trending {
 .trending-item p {
   color: var(--dark-gray-color);
 }
+
+@media (max-width: 1100px) {
+  body {
+    grid-template-columns: 250px 1fr;
+    grid-template-areas:
+      "nav header"
+      "nav content";
+  }
+
+  .content-scroll {
+    grid-template-columns: 1fr;
+  }
+
+  main .content {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  header .search {
+    width: clamp(220px, 60%, 560px);
+  }
+
+  .header-bottom .action-buttons {
+    width: auto;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: flex-end;
+  }
+
+  .action-buttons button {
+    margin-left: 0;
+    flex: 0 1 100%;
+    margin-left: 40%;
+    padding: 5px 14px;
+  }
+}
+
+@media (max-width: 738px) {
+  body {
+    grid-template-columns: 78px 1fr;
+  }
+
+  .logo .title,
+  .nav-links li span,
+  .nav-settings li span {
+    display: none;
+  }
+
+  .nav-links ul,
+  .nav-settings ul {
+    padding-left: 0;
+  }
+
+  .nav-links li,
+  .nav-settings li {
+    justify-content: center;
+  }
+
+  .nav-links svg,
+  .nav-settings svg {
+    width: 1.75rem;
+  }
+
+  header .header-top {
+    padding-right: 0.75rem;
+  }
+
+  header .search {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  .header-bottom {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.5rem 1rem 1rem;
+  }
+
+  .greeting .profile-picture {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .greeting .text {
+    padding-left: 1rem;
+  }
+
+  .header-bottom .action-buttons {
+    margin-left: auto;
+  }
+
+  .header-bottom .action-buttons button {
+    flex: 0 1 max-content;
+    margin-left: 0;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  aside {
+    padding: 0 1rem 1rem;
+  }
+}
