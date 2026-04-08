@@ -228,7 +228,7 @@ header .search {
 }
 
 .user-profile .profile-picture {
-  width: 3rem;
+  width: 2.75rem;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 1px solid var(--hover-color);
@@ -387,8 +387,8 @@ aside .trending {
   height: 50px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  
   object-fit: cover;
+  cursor: pointer;
 }
 
 .trending-item spam {
