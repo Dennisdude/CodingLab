@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   display: grid;
-  grid-template-columns: 290px 2fr min(30%, 400px);
+  grid-template-columns: 290px 2fr min(30%, 350px);
   grid-template-rows: auto 1fr;
   grid-template-areas: 
       "nav header header"
@@ -316,6 +316,7 @@ main .content {
 
 .project-card p {
   margin: 0.5rem 0;
+  color: var(--dark-gray-color);
 }
 
 .project-card .card-buttons {
@@ -341,11 +342,33 @@ aside {
   padding: 1.5rem 1.5rem 1.5rem 0;
 }
 
+aside #news-headline,
+aside #trending-headline {
+  padding-left: 10px;
+  margin-bottom: 0.4rem;
+}
+
+aside #trending-headline {
+  margin-top: 1rem;
+}
+
 aside .news-container,
 aside .trending {
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   background-color: white;
   border-radius: 10px;
+}
+
+.news-container .middle {
+  margin: 0.75rem 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--hover-color);
+  border-bottom: 1px solid var(--hover-color);
+}
+
+.news-container p {
+  font-size: 0.8rem;
+  color: var(--dark-gray-color);
 }
 
 .trending .trending-item {
@@ -355,9 +378,23 @@ aside .trending {
   margin-bottom: 1rem;
 }
 
-aside img {
-  width: 45px;
-  height: 45px;
+.trending .trending-item:last-child {
+  margin-bottom: 0;
+}
+
+.trending-item img {
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
+  
   object-fit: cover;
+}
+
+.trending-item spam {
+  font-weight: 500;
+}
+
+.trending-item p {
+  color: var(--dark-gray-color);
 }
